@@ -1,5 +1,10 @@
-export default function Water() {
-    return(
-        <h1>WELCOME THIS IS WATER</h1> 
-    )
+export default class {
+    constructor() {
+        document.title = "Water";
+    }
+    async getHtml() {
+        return `
+            <h1>This is Water Page</h1>
+        `;
+    }
 }

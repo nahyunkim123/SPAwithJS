@@ -1,5 +1,10 @@
-export default function Earth() {
-    return(
-        <h1>WELCOME THIS IS EARTH</h1> 
-    )
-};
+export default class {
+    constructor() {
+        document.title = "Earth";
+    }
+    async getHtml() {
+        return `
+            <h1>This is Earth Page</h1>
+        `;
+    }
+}

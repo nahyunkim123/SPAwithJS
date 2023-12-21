@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 
+//express 앱 객체 
 const app = express();
 
 // express에서 정적 파일 제공

@@ -1,5 +1,10 @@
-export default function Fire() {
-    return(
-        <h1>WELCOME THIS IS FIRE</h1> 
-    )
+export default class {
+    constructor() {
+        document.title = "Fire";
+    }
+    async getHtml() {
+        return `
+            <h1>This is Fire Page</h1>
+        `;
+    }
 }

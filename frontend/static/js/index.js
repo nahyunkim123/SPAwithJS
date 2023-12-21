@@ -1,7 +1,13 @@
-import Earth from "./pages/Earth"
-import Fire from "./pages/Fire"
-import Air from "./pages/Air"
-import Water from "./pages/Water"
+import Earth from "./pages/Earth.js"
+import Fire from "./pages/Fire.js"
+import Air from "./pages/Air.js"
+import Water from "./pages/Water.js"
+import NotFound from "./pages/Notfound.js"
+
+const navigateTo = url => {
+    history.pushState(null, null, url);
+    router();
+};
 
 const router = async () => {
     const routes = [
@@ -10,28 +16,41 @@ const router = async () => {
         { path: "/air", view: Air },
         { path: "/fire", view: Fire },
     ];
+
     const pageMatches = routes.map((route)=>{
         return{
             route,
             isMatch: route.path === location.pathname,
         }
-    })
-    let match = pageMatches.find((pageMatch)=>{pageMatch.isMatch})
- 
+    });
+
+    let match = pageMatches.find((pageMatch)=>{pageMatch.isMatch});
+    
+    if (!match) {
+        match = {
+            route: location.pathname,
+            isMatch: true,
+        };
+        const page = new NotFound();
+        document.querySelector("#root").innerHTML = await page.getHtml();
+    } else {
+        const page = new match.route.view();
+        document.querySelector("#root").innerHTML = await page.getHtml();
+    }
 }
 
 
-// document가 로드됐을 때 해당 페이지 정보 띄우기
-document.addEventListener("DOMContentLoaded",()=>{
-    document.body.addEventListener("click",(e)=>{
-        if(e.target.matches("[data-link]")){
+// 뒤로 가기 할 때 데이터 나오게 하기 위함
+window.addEventListener("popstate", () => {
+    router();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("click", (e) => {
+        if (e.target.matches("[data-link]")) {
             e.preventDefault();
-            history.pushState(null, null, e.target.href)
-            router()
+            navigateTo(e.target.href);
         }
-    })
-})
-// 뒤로가기, 앞으로 가기
-window.addEventListener("popstate", ()=>{
-    router()
-})
+    });
+    router();
+});
