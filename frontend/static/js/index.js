@@ -24,7 +24,7 @@ const router = async () => {
         }
     });
 
-    let match = pageMatches.find((pageMatch)=>{pageMatch.isMatch});
+    let match = pageMatches.find((pageMatch) => pageMatch.isMatch);
     
     if (!match) {
         match = {

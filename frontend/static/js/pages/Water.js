@@ -4,7 +4,7 @@ export default class {
     }
     async getHtml() {
         return `
-            <h1>This is Water Page</h1>
+            <h1>Water</h1>
         `;
     }
 }

@@ -3,11 +3,9 @@
     margin: 0;
   }
   
-  body {
-    display: flex;
-  }
+
   
-  .nav {
+.nav {
     display: flex;
     flex-direction: column;
     background: #222222;
@@ -25,12 +23,8 @@
     }
   }
   
-  #root {
-    margin: 2em;
-    line-height: 1.5;
-    font-weight: 500;
-  }
-  
-  a {
-    color: #009579;
-  }
+#earthCanvas {
+    border: 2px solid white;
+    /* 추가적인 canvas 스타일 지정 가능 */
+}
+
