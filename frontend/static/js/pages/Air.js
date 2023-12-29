@@ -3,6 +3,8 @@ export default class {
         document.title = "Air";
     }
     async getHtml() {
+
+        
         return `
             <h1>This is Air Page</h1>
         `;
